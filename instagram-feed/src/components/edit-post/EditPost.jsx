@@ -2,6 +2,7 @@ import React ,{useContext, useState, useSearchParams, useEffect} from 'react'
 import { GlobalAppContext } from '../../contexts/GobalContext';
 import { useHistory } from "react-router-dom";
 import { useParams } from 'react-router-dom';
+import moment from 'moment'
 
 // yuo can find all params from here
 const EditPost = () => {
@@ -23,7 +24,9 @@ console.log(params)
     function save (){
         let postsCopy = [...posts]
         let postToBeUpdated = postsCopy.find((post) => post.id === postBeingEdited?.id)
+
         postToBeUpdated.caption = cap;
+        postToBeUpdated.updatedAt = moment(new Date()).format("DD-MM-YYYY hh:mm:ss ").toString();
         setPosts(postsCopy)
         setCap("")
         history.push('/')

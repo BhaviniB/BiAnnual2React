@@ -23,6 +23,7 @@ const Post = ({post}) => {
             history.push(`/edit/${id}`)
             }
             }>Edit</button>
+            <p>{post.updatedAt}</p>
           </div>
     )
 }
